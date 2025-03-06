@@ -5,20 +5,52 @@ import type { Tables } from '../../../database/types.ts'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/ui/data-table/DataTable.vue'
 
-const tasks = ref<Tables<'projects'>[] | null>(null)
+const tasks = ref<Tables<'tasks'>[] | null>(null)
 ;(async () => {
-  const { data, error } = await supabase.from('projects').select()
+  const { data, error } = await supabase.from('tasks').select()
   if (error) console.log(error)
-
+  console.log(data)
   tasks.value = data
 })()
 
 const columns: ColumnDef<Tables<'tasks'>>[] = [
   {
     accessorKey: 'name',
-    header: () => h('div', { class: 'text-left ' }, 'Name'),
+    header: () => h('div', { class: 'text-left' }, 'Name'),
     cell: ({ row }) => {
       return h('div', { class: 'text-left font-medium' }, row.getValue('name'))
+    },
+  },
+  {
+    accessorKey: 'status',
+    header: () => h('div', { class: 'text-left' }, 'Status'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('status'))
+    },
+  },
+  {
+    accessorKey: 'due_date',
+    header: () => h('div', { class: 'text-left' }, 'Due Date'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('due_date'))
+    },
+  },
+  {
+    accessorKey: 'project_id',
+    header: () => h('div', { class: 'text-left' }, 'Project'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('project_id'))
+    },
+  },
+  {
+    accessorKey: 'collaborators',
+    header: () => h('div', { class: 'text-left' }, 'Collaborators'),
+    cell: ({ row }) => {
+      return h(
+        'div',
+        { class: 'text-left font-medium' },
+        JSON.stringify(row.getValue('collaborators')),
+      )
     },
   },
 ]
