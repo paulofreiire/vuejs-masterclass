@@ -3,7 +3,11 @@
 </script>
 
 <template>
-<h1>xd</h1>
+<div>
+  <h1>
+    Task
+  </h1>
+</div>
 </template>
 
 <style scoped>
