@@ -33,6 +33,15 @@ router.afterEach(() => {
 <template>
   <section class="error">
     <AppErrorDevSection :message :details :code :custom-code :hint :status-code />
+    <AppErrorProdSection
+      :message
+      :details
+      :code
+      :custom-code
+      :hint
+      :status-code
+      :isCustomError="errorStore.isCustomError"
+    />
   </section>
 </template>
 <style scoped>
