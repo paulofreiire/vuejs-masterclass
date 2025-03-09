@@ -1,7 +1,6 @@
 import type { Session, User } from '@supabase/supabase-js'
 import type { Tables } from 'database/types.ts'
 import { profileQuery } from '@/utils/supaQueries.ts'
-import { usePageStore } from '@/stores/page.ts'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = ref<null | User>(null)
