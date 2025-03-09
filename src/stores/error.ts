@@ -1,5 +1,6 @@
 import type { CustomError, ExtendedPostgrestError } from '@/types/Error.ts'
 import type { PostgrestError } from '@supabase/supabase-js'
+import { usePageStore } from '@/stores/page.ts'
 
 export const useErrorStore = defineStore('error-store', () => {
   const activeError = ref<null | CustomError | ExtendedPostgrestError>(null)
@@ -31,3 +32,7 @@ export const useErrorStore = defineStore('error-store', () => {
 
   return { activeError, setError, isCustomError, clearError }
 })
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useErrorStore, import.meta.hot))
+}
