@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { supabase } from '@/lib/supbaseClient.ts'
 
+const router = useRouter()
+
 const formData = ref({
   username: '',
   firstName: '',
@@ -27,7 +29,6 @@ const signup = async () => {
 
     if (error) return console.log('Profiles error', error)
   }
-
   router.push('/')
 }
 </script>
