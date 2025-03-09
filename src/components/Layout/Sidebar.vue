@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const links = [
   {
     title: 'Dashboard',
@@ -34,6 +33,12 @@ const accountLinks = [
     icon: 'lucide:log-out',
   },
 ]
+
+const executeAction = (linktitle: string) => {
+  if (linktitle === 'Sign out') {
+    console.log('Signing out')
+  }
+}
 </script>
 <template>
   <aside
@@ -44,7 +49,7 @@ const accountLinks = [
         <iconify-icon icon="lucide:menu"></iconify-icon>
       </Button>
 
-      <Button  variant="outline" size="icon" class="w-8 h-8">
+      <Button variant="outline" size="icon" class="w-8 h-8">
         <iconify-icon icon="lucide:plus"></iconify-icon>
       </Button>
     </div>
@@ -55,7 +60,7 @@ const accountLinks = [
       </div>
 
       <div class="border-y text-center bg-background py-3">
-        <SidebarLinks :links="accountLinks" />
+        <SidebarLinks :links="accountLinks" @actionclicked="executeAction" />
       </div>
     </nav>
   </aside>
