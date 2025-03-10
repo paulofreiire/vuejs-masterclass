@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { supabase } from '@/lib/supbaseClient.ts'
+
 const errorStore = useErrorStore()
 onErrorCaptured((error) => {
   errorStore.setError({ error })
 })
 
-onMounted(async () => {})
+onMounted(async () => {
+  useAuthStore().trackAuthStore()
+})
 </script>
 
 <template>

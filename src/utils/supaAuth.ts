@@ -21,19 +21,17 @@ export const register = async (formData: RegisterForm) => {
     if (error) return console.log('Profiles error', error)
   }
 
-  await authStore.setAuth(data.session)
   return true
 }
 
 export const login = async (formData: LoginForm) => {
-  const { error, data } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email: formData.email,
     password: formData.password,
   })
 
   if (error) return console.log(error)
 
-  await authStore.setAuth(data.session)
   return true
 }
 
@@ -42,6 +40,5 @@ export const logout = async () => {
 
   if (error) return console.log(error)
 
-  await authStore.setAuth()
   return true
 }
