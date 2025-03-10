@@ -1,8 +1,6 @@
 import { supabase } from '@/lib/supbaseClient.ts'
 import type { LoginForm, RegisterForm } from '@/types/AuthForm.ts'
 
-const authStore = useAuthStore()
-
 export const register = async (formData: RegisterForm) => {
   const { data, error } = await supabase.auth.signUp({
     email: formData.email,

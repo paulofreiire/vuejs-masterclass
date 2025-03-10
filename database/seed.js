@@ -132,8 +132,7 @@ const seedDatabase = async (numEntriesPerTable) => {
   const testUserId = await PrimaryTestUserExists()
 
   if (!testUserId) {
-    const primaryTestUserId = await createPrimaryTestUser()
-    userId = primaryTestUserId
+    userId = await createPrimaryTestUser()
   } else {
     userId = testUserId
   }
