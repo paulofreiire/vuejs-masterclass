@@ -6,6 +6,8 @@ usePageStore().pageData.title = 'Projects'
 const projectsLoader = useProjectsStore()
 const { projects } = storeToRefs(projectsLoader)
 const { getProjects } = projectsLoader
+
+await getProjects()
 </script>
 
 <template>
