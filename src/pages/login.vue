@@ -52,9 +52,8 @@ const signin = async () => {
               required
               v-model="formData.email"
               :class="{ 'border-red-500': serverError }"
-              @input="handleLoginForm(formData)"
             />
-            <ul class="txt-sm text-left text-red-500" v-if="realtimeErrors?.email.length">
+            <ul class="txt-sm text-left text-red-500" v-if="realtimeErrors?.email">
               <li v-for="error in realtimeErrors.email" :key="error" class="list-disc">
                 {{ error }}
               </li>
