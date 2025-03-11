@@ -31,6 +31,8 @@ export const useProjectsStore = defineStore('projects-store', () => {
   }
 
   const getProjects = async () => {
+    projects.value = null
+
     const { data, error, status } = await loadProjects('projects')
 
     if (error) useErrorStore().setError({ error, customCode: status })
@@ -46,18 +48,26 @@ export const useProjectsStore = defineStore('projects-store', () => {
   }
 
   const getProject = async (slug: string) => {
-    const { data, error } = await loadProject(slug)
+    project.value = null
 
-    if (error) console.log(error)
+    const { data, error, status } = await loadProject(slug)
+
+    if (error) useErrorStore().setError({ error, customCode: status })
 
     if (data) project.value = data
 
     validateCache({
       ref: project,
       query: projectQuery,
-      key: 'project',
+      key: slug,
       loaderFn: loadProject,
     })
   }
-  return { projects, getProjects, getProject, project }
+
+  return {
+    projects,
+    getProjects,
+    getProject,
+    project,
+  }
 })
