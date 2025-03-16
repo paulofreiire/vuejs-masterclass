@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { supabase } from '@/lib/supbaseClient.ts'
-
 const errorStore = useErrorStore()
 onErrorCaptured((error) => {
   errorStore.setError({ error })
@@ -9,10 +7,15 @@ onErrorCaptured((error) => {
 onMounted(async () => {
   useAuthStore().trackAuthStore()
 })
+
+const { user } = storeToRefs(useAuthStore())
+
+const AuthLayout = defineAsyncComponent(() => import('./components/Layout/main/AuthLayout'))
+const GuestLayout = defineAsyncComponent(() => import('./components/Layout/main/GuestLayout'))
 </script>
 
 <template>
-  <AuthLayout>
+  <Component :is="user ? AuthLayout : GuestLayout">
     <AppErrorPage v-if="errorStore.activeError" />
     <RouterView v-else v-slot="{ Component, route }">
       <Suspense v-if="Component" :timeout="0">
@@ -23,5 +26,5 @@ onMounted(async () => {
         </template>
       </Suspense>
     </RouterView>
-  </AuthLayout>
+  </Component>
 </template>
