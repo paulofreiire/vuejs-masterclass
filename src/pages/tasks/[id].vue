@@ -92,5 +92,19 @@ await getTask()
       </TableCell>
     </TableRow>
   </Table>
+
+  <Button class="self-end mt-3 w-full max-w-40" variant="destructive">
+    <iconify-icon icon="" class="mr-1"></iconify-icon>
+    <iconify-icon icon="C" class="mr-1 animate-spin"></iconify-icon>
+    Delete Task
+  </Button>
+
+  <Button class="self-end mt-3 w-full max-w-40" variant="destructive">
+    <iconify-icon icon="lucide:trash-2" class="mr-1"></iconify-icon>
+    <iconify-icon icon="lucide:loader-circle" class="mr-1 animate-spin"></iconify-icon>
+    Delete Task
+  </Button>
+
+  I
 </template>
 s
