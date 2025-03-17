@@ -24,6 +24,7 @@ export default defineConfig({
         'vue',
         VueRouterAutoImports,
         { pinia: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'] },
+        { 'vue-meta': ['useMeta'] },
       ],
       dts: true,
       viteOptimizeDeps: true,

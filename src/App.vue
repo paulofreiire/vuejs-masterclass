@@ -12,9 +12,14 @@ const { user } = storeToRefs(useAuthStore())
 
 const AuthLayout = defineAsyncComponent(() => import('./components/Layout/main/AuthLayout.vue'))
 const GuestLayout = defineAsyncComponent(() => import('./components/Layout/main/GuestLayout.vue'))
+
+useMeta({
+  title: 'Daphne',
+})
 </script>
 
 <template>
+  <metainfo></metainfo>
   <Transition name="fade" mode="out-in">
     <Component :is="user ? AuthLayout : GuestLayout" :key="user?.id">
       <AppErrorPage v-if="errorStore.activeError" />

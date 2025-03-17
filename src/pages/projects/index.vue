@@ -14,6 +14,10 @@ const { getGroupedCollabs, groupedCollabs } = useCollabs()
 await getGroupedCollabs(projects.value ?? [])
 
 const columnsWithCollabs = columns(groupedCollabs)
+
+useMeta({
+  title: 'Projects | Daphne',
+})
 </script>
 
 <template>
