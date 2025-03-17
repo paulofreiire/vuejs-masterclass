@@ -10,8 +10,8 @@ onMounted(async () => {
 
 const { user } = storeToRefs(useAuthStore())
 
-const AuthLayout = defineAsyncComponent(() => import('./components/Layout/main/AuthLayout'))
-const GuestLayout = defineAsyncComponent(() => import('./components/Layout/main/GuestLayout'))
+const AuthLayout = defineAsyncComponent(() => import('./components/Layout/main/AuthLayout.vue'))
+const GuestLayout = defineAsyncComponent(() => import('./components/Layout/main/GuestLayout.vue'))
 </script>
 
 <template>
